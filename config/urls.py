@@ -25,10 +25,13 @@ urlpatterns = [
     path('api/assignments/', include('assignments.urls')),
 
     # Swagger UI Patterns
-path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-path(
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
         "api/docs/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
-    )
+    ),
+
+    # The simple HTML page for humans to use the assignment forms.
+    path("", include("assignments.web_urls")),
 ]
